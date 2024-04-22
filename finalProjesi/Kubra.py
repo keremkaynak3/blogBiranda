@@ -1,3 +1,5 @@
+import re
+
 print('''Manisa
 Celal Bayar University''')
 
@@ -59,6 +61,7 @@ print(lst2)
 
 print("-------------------------")
 
+
 sentence='Manisa Celal Bayar University'
 print(sentence)
 print(sentence.find('Cel'))                         # Cel hecesinin kaçıncı indexte başladığını yazdırır
@@ -74,13 +77,85 @@ print(sentence.lower().count('a'))
 print(sentence.lower().count('a', 5, 15))
 print(sentence.replace('University','Uni'))
 
-sentence = 'MANISA Celal Bayar University'
+print("-------------------------")
 
-example = '             Hello World     '
-print(example)
-example2 = example.strip()   # Boşlukları atar
-print(example2)
+example3 = '      ******-------Hello World-------**************     '
+ex4 = example3.strip()       # Boşlukları atar
+ex4 = ex4.strip('*')         # Yıldızları atar
+print(ex4)
+print(ex4.strip('-'))        # Kısa çizgileri atar
+
+print("-------------------------")
+
+dictionary = {}  # key :value
+dictionary1 = dict()
+print(type(dictionary), type(dictionary1))
+dictionary['One'] = 1
+dictionary['Two'] = 2
+print(dictionary)
+
+names = ['Ali', 'Esmar', 'Gül', 'Baran']
+numbers = [1, 2, 3, 4]
+
+print("-------------------------")
+
+dictionary3 = zip(names, numbers)
+print(type(dictionary3))
+dictionary4 = dict(dictionary3)
+print(dictionary4)  # key: value
+print(dictionary4.items())
+
+print("-------------------------")
+
+lst1=[1,2,3,4,5]
+print(list(filter(lambda x:x<4, lst1)))
+print(list(map(lambda x:x<4, lst1)))
+print(lst1)
+
+print("-------------------------")
+
+txt = "on the horizon"
+x = re.findall("on", txt)
+print(x)
+print(len(x))
+
+x = re.findall("[arn]", txt)
+print(x)
+if x:
+    print("There is match")
+else:
+    print("No match!")
+print(x.count('a'))
+print(x.count(('n')))
+
+print("-------------------------")
+
+txt="The python word located in the position"
+x=re.split("\s", txt.lower())
+print(x)
+print(x.count('the'))
 
 
+txt="The python word located in position"
+x=re.split(r"\s", txt,1)
+print(x)
+
+def parent():
+    def nested():
+        print("Nested")
+
+    parent.external_nested = nested
+
+    print("Parent")
 
 
+parent()
+parent.external_nested()
+
+my_name = "Bora Canbula"
+print(my_name[2::-1])
+
+x = set(i for i in range(0,4,2))
+y = set(i for i in range(1,5,2))
+print(x^y)
+print(f"{x},{y}")
